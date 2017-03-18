@@ -1,0 +1,25 @@
+.Board {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.cell {
+  width: 35px;
+  height: 35px;
+  background-color: #ccc;
+}
+
+.snake {
+  background-color: #807920;
+}
+
+.fruit {
+  background-color: #ff5605;
+}
