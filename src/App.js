@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 import Board from './Board'
+import Vector from './Vector'
 
 class App extends Component {
   render() {
     return (
-      <Board size = '20' />
+      <Board size = { new Vector(20,20) } />
     );
   }
 }
