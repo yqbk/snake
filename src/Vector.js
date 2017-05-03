@@ -25,11 +25,12 @@ class Vector extends Component {
     return new Vector(Math.floor(Math.random() * size.x), Math.floor(Math.random() * size.y));
   }
 
-  rotateRight(vec) {
+  // why static here?
+  static rotateRight(vec) {
     return new Vector(-vec.y, vec.x);
   }
 
-  rotateLeft(vec) {
+  static rotateLeft(vec) {
     return new Vector(vec.y, -vec.x);
   }
 

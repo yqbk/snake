@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Board from './Board'
 import Vector from './Vector'
+import Game from './Game'
 
 class App extends Component {
   render() {
-    return (
-      <Board size = { new Vector(20,20) } />
-    );
+    return <Game boardSize={new Vector(20, 20)} />;
   }
 }
 
