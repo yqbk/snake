@@ -4,7 +4,6 @@ import Vector from './Vector'
 import classNames from "classnames";
 import "./Board.css"
 
-
 class Board extends Component {
   constructor(props) {
     super(props)
@@ -13,22 +12,30 @@ class Board extends Component {
   }
 
   static propTypes = {
-    size: PropTypes.instanceOf(Vector)
+    size: PropTypes.instanceOf(Vector).isRequired,
+    snakePositions: PropTypes.arrayOf(PropTypes.instanceOf(Vector)).isRequired,
+    fruitPosition: PropTypes.instanceOf(Vector).isRequired
   };
 
   render() {
 
-    const rows = _.range(this.props.size.y).map( (y) => {
-      const cells = _.range(this.props.size.x).map( x => {
-        return <div> cell </div>
-      })
-      return cells;
+    const {size, snakePositions, fruitPosition} = this.props;
+
+    const rows = _.range(size.y).map((y) => {
+      const cells = _.range(size.x).map(x => {
+        const pos = new Vector(x, y);
+        const maybeSnakeStyle = {
+          snake: snakePositions.find(s => s.equals(pos))
+        };
+        const maybeFruitStyle = {fruit: fruitPosition.equals(pos)};
+        return <div key={x} className={classNames("cell", maybeSnakeStyle, maybeFruitStyle)}/>;
+      });
+      return <div key={y} className="row">{cells}</div>;
     });
 
-    return (
-      <div> { rows } </div>
-    )
+    return <div className="board">{rows}</div>;
   }
 }
+
 
 export default Board;
