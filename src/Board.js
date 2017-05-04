@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from "underscore";
+import * as PIXI from 'pixi'
 import Vector from './Vector'
 import classNames from "classnames";
 import "./Board.css"
@@ -7,6 +8,12 @@ import "./Board.css"
 class Board extends Component {
   constructor(props) {
     super(props)
+
+    //this.container = new PIXI.Container()
+    //this.hex = new PIXI.Sprite.fromImage('../public/head.png')
+    //this.initializeItem(this.hex, this.x, this.y, 0.5, 'hexes')
+    //this.container.addChild(this.hex)
+
 
     this.state = { size: this.props.size }
   }
@@ -18,6 +25,9 @@ class Board extends Component {
   };
 
   render() {
+
+    //var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+    //document.body.appendChild(app.view);
 
     const {size, snakePositions, fruitPosition} = this.props;
 
@@ -32,6 +42,8 @@ class Board extends Component {
       });
       return <div key={y} className="row">{cells}</div>;
     });
+
+
 
     return <div className="board">{rows}</div>;
   }
